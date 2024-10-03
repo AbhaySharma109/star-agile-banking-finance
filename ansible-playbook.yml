@@ -12,5 +12,8 @@
   - name : Start Docker Service
     command : sudo systemctl start docker
 
+  - name : Build Docker Image
+    command: docker pull abhay123321/staragileprojectfinance:v1
+
   - name: Deploy Docker Container
     command: docker run -itd -p 8084:8081 abhay123321/staragileprojectfinance:v1
