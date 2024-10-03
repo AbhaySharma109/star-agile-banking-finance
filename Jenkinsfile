@@ -4,40 +4,8 @@ pipeline {
     TF_IN_AUTOMATION = 'true'
     AWS_SHARED_CREDENTIALS_FILE='/root/.aws/credentials'
   }
-
-  stages {
-    stage ("github clone") {
-      steps{
-        git url: "https://github.com/AbhaySharma109/star-agile-banking-finance.git", branch: "master"
-      }
-    }
-
-    stage ("Maven build"){
-      steps {
-        script{
-          sh 'mvn clean package'
-        }
-      }
-    }
-
-    stage ("Build docker image"){
-      steps{
-        script{
-          sh 'docker build -t abhay123321/staragileprojectfinance:v1'
-          sh 'docker images'
-        }
-      }
-    }
-
-    stage('Docker login'){
-      steps{
-        withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'USER')]){
-          sh "echo $PASS | docker login -u $USER --password-stdin:
-          sh "docker push abhay123321/staragileprojectfinance:v1"
-        }
-      }
-    }
-    
+  
+  stages{
     stage('Init TF') {
       steps {
         sh '''
