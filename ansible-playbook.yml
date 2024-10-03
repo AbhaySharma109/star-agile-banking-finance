@@ -16,4 +16,4 @@
     command: docker build -t abhay123321/staragileprojectfinance:v1
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 abhay123321/staragileprojectfinance:v1
+    command: docker run -itd -p 8082:80 abhay123321/staragileprojectfinance:v1
